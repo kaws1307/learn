@@ -9,6 +9,7 @@ INSERT INTO `music` (id, author, song) VALUES ('1', '林俊杰', '讲故事写�
 INSERT INTO `music` (id, author, song) VALUES ('2', '林俊杰', '对的时间点');
 INSERT INTO `music` (id, author, song) VALUES ('3', '周杰伦', '说好不哭');
 INSERT INTO `music` (id, author, song) VALUES ('4', '梁静茹', '慢冷');
+INSERT INTO `music` (id, author, song) VALUES ('5', '刘欢', '千万次的问');
 
 
 COMMIT;
