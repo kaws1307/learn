@@ -2,10 +2,13 @@ package edu.hubu.learn.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.hubu.learn.entity.Music;
 import edu.hubu.learn.entity.User;
+import edu.hubu.learn.service.MusicService;
 import edu.hubu.learn.service.UserService;
 
 @Controller
@@ -14,6 +17,9 @@ public class IndexController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MusicService musicService;
 
     @RequestMapping("/")
     public ModelAndView index() {
@@ -28,6 +34,24 @@ public class IndexController {
         User user = userService.getUser(1l);
         mav.addObject("user", user);
         mav.setViewName("user");
+        return mav;
+    }
+    
+    @RequestMapping("/music")
+    public ModelAndView music() {
+        ModelAndView mav = new ModelAndView();
+        Music music = musicService.getMusic(1l);
+        mav.addObject("music", music);
+        mav.setViewName("music");
+        return mav;
+    }
+
+    @RequestMapping("/music/{id}")
+    public ModelAndView getMusic(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        Music music = musicService.getMusic(id);
+        mav.addObject("music", music);
+        mav.setViewName("music");
         return mav;
     }
 }
