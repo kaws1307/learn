@@ -23,4 +23,12 @@ public class MusicService {
     public Music addMusic(Music author) {
         return musicDao.save(author);
     }
+
+    public void deleteMusic(Long id) {
+        musicDao.deleteById(id);
+    }
+
+    public void modifyMusic(Music author) {
+        musicDao.save(author);
+    }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.hubu.learn.entity.Music;
 import edu.hubu.learn.service.MusicService;
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/music")
@@ -53,6 +54,28 @@ public class MusicController {
     @RequestMapping("/do_add")
     public ModelAndView doAddUser(Music song) {
         musicService.addMusic(song);
+        ModelAndView mav = new ModelAndView("redirect:/music/list");
+        return mav;
+    }
+
+    @RequestMapping("/modify/{id}")
+    public ModelAndView modifyMusic(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("music", musicService.getMusic(id));
+        mav.setViewName("music_modify");
+        return mav;
+    }
+
+    @RequestMapping("/do_modify")
+    public ModelAndView doModifyMusic(Music author) {
+        musicService.modifyMusic(author);
+        ModelAndView mav = new ModelAndView("redirect:/music/list");
+        return mav;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable Long id) {
+        musicService.deleteMusic(id);
         ModelAndView mav = new ModelAndView("redirect:/music/list");
         return mav;
     }
