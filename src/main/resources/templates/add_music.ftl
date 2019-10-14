@@ -26,7 +26,7 @@
   <body>
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="#">首页</a></li>
-        <li role="presentation"><a href="#">我的音乐</a></li>
+        <li role="presentation"><a href="/music/list">我的音乐</a></li>
         <li role="presentation" class="active"><a href="/add">新增</a></li>
         <li role="presentation"><a href="#">推荐</a></li>
     </ul>
