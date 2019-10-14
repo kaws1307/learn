@@ -2,7 +2,6 @@ package edu.hubu.learn.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,6 +40,20 @@ public class MusicController {
         List<Music> musics= musicService.getMusics();
         mav.addObject("music", musics);
         mav.setViewName("music");
+        return mav;
+    }
+
+    @RequestMapping("/add")
+    public ModelAndView addMusic() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("add_music");
+        return mav;
+    }
+
+    @RequestMapping("/do_add")
+    public ModelAndView doAddUser(Music song) {
+        musicService.addMusic(song);
+        ModelAndView mav = new ModelAndView("redirect:/music/list");
         return mav;
     }
 

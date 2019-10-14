@@ -17,42 +17,30 @@
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
     <style>
-        .table {
-            width: 30%;
+        form {
+            width: 20%;
             margin: 20px;
-        }
-        tr:nth-child(even) {
-            background: #dff0d8;
         }
     </style>
   </head>
   <body>
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="#">首页</a></li>
-        <li role="presentation" class="active"><a href="/music/list">我的音乐</a></li>
-        <li role="presentation"><a href="/music/add">新增</a></li>
+        <li role="presentation"><a href="#">我的音乐</a></li>
+        <li role="presentation" class="active"><a href="/add">新增</a></li>
         <li role="presentation"><a href="#">推荐</a></li>
     </ul>
-    <table class="table">
-        <thead>
-            <th>ID</th>
-            <th>歌手</th>
-            <th>歌曲</th>
-            <th cols="2">操作</th>
-        </thead>
-        <tbody>
-        <#list music as music1>
-        <tr>
-            <td> ${music1.id} </td>
-            <td> ${music1.author} </td>
-            <td> ${music1.song} </td>
-            <td> 修改 </td>
-            <td> 删除 </td>
-        </tr>
-        </#list>
-        </tbody>
-    </table>
-
+    <form action="/music/do_add">
+        <div class="form-group">
+            <label for="author">歌手</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="歌手">
+        </div>
+        <div class="form-group">
+            <label for="song">歌曲</label>
+            <input type="text" class="form-control" id="song" name="song" placeholder="歌曲">
+        </div>
+        <button type="submit" class="btn btn-default">提交</button>
+    </form>
 
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
